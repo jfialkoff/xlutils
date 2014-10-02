@@ -11,7 +11,7 @@ package_dir = os.path.join(os.path.dirname(__file__),'xlutils')
 
 setup(
     name='xlutils',
-    version=file(os.path.join(base_dir, name, 'version.txt')).read().strip(),
+    version=open(os.path.join(base_dir, name, 'version.txt')).read().strip(),
     author='Chris Withers',
     author_email='chris@simplistix.co.uk',
     license='MIT',
@@ -30,7 +30,7 @@ setup(
     include_package_data=True,
     install_requires=[
     'xlrd >= 0.7.2',
-    'xlwt >= 0.7.4',
+    'xlwt-future >= 0.8',
     ],
     entry_points = {
         'console_scripts': [
