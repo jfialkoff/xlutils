@@ -7,7 +7,7 @@
 import os
 from mock import Mock
 from shutil import rmtree
-from StringIO import StringIO
+from io import StringIO
 from tempfile import mkdtemp,TemporaryFile
 from testfixtures import replace,tempdir
 from unittest import TestSuite,TestCase,makeSuite

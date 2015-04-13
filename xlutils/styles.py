@@ -27,7 +27,7 @@ class Styles:
             assert xfi not in xfi_to_name or not xfi_to_name[xfi]
             xfi_to_name[xfi] = name
         self.cell_styles = {}
-        for xfi in xrange(len(book.xf_list)):
+        for xfi in range(len(book.xf_list)):
             xf = book.xf_list[xfi]
             if xf.is_style:
                 continue

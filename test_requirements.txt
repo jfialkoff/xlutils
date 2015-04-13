@@ -1,0 +1,5 @@
+future==0.14.3
+mock==1.0.1
+testfixtures==4.1.2
+xlrd==0.9.3
+xlwt-future==0.8.0

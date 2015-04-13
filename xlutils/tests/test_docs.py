@@ -5,7 +5,7 @@
 # See license.txt for more details.
 
 from doctest import REPORT_NDIFF, ELLIPSIS
-from fixtures import test_files
+from xlutils.fixtures import test_files
 from glob import glob
 from manuel import doctest
 from manuel.testing import TestSuite

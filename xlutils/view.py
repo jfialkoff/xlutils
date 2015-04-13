@@ -65,7 +65,7 @@ class SheetView(object):
                         stop = max(0, max_n + stop_val)
                     elif stop_val > 0:
                         stop = min(max_n, stop_val)
-            setattr(self, name, xrange(start, stop))
+            setattr(self, name, range(start, stop))
 
     def __row(self, rowx):
         for colx in self.cols:

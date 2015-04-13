@@ -10,6 +10,11 @@ except ImportError:
     from xlrd import open_workbook, XL_CELL_EMPTY, XL_CELL_TEXT, XL_CELL_NUMBER
     null_cell_types = (XL_CELL_EMPTY, )
 
+try:
+    unicode
+except NameError:
+    unicode = str
+
 def cells_all_junk(cells, is_rubbish=None):
     """\
     Return True if all cells in the sequence are junk.
@@ -37,7 +42,7 @@ def cells_all_junk(cells, is_rubbish=None):
         return False
     return True
 
-def ispunc(c, s=set(str(string.punctuation))):
+def ispunc(c, s=set(unicode(string.punctuation))):
     """Return True if c is a single punctuation character"""
     return c in s
 
@@ -45,7 +50,7 @@ def number_of_good_rows(sheet, checker=None, nrows=None, ncols=None):
     """Return 1 + the index of the last row with meaningful data in it."""
     if nrows is None: nrows = sheet.nrows
     if ncols is None: ncols = sheet.ncols
-    for rowx in xrange(nrows - 1, -1, -1):
+    for rowx in range(nrows - 1, -1, -1):
         if not cells_all_junk(sheet.row_slice(rowx, 0, ncols), checker):
             return rowx + 1
     return 0
@@ -54,7 +59,7 @@ def number_of_good_cols(sheet, checker=None, nrows=None, ncols=None):
     """Return 1 + the index of the last column with meaningful data in it."""
     if nrows is None: nrows = sheet.nrows
     if ncols is None: ncols = sheet.ncols
-    for colx in xrange(ncols - 1, -1, -1):
+    for colx in range(ncols - 1, -1, -1):
         if not cells_all_junk(sheet.col_slice(colx, 0, nrows), checker):
             return colx+1
     return 0
@@ -99,7 +104,7 @@ def check_file(fname, verbose, do_punc=False, fmt_info=0, encoding='ascii', ones
         sheet_density_pct_s = ''
         if verbose >= 2:
             colxrange = range(ngoodcols)
-            for rowx in xrange(ngoodrows):
+            for rowx in range(ngoodrows):
                 rowtypes = sheet.row_types(rowx)
                 for colx in colxrange:
                     if rowtypes[colx] not in null_cell_types:
@@ -110,7 +115,7 @@ def check_file(fname, verbose, do_punc=False, fmt_info=0, encoding='ascii', ones
         if verbose >= 3:
             # which rows have non_empty cells in the right-most column?
             lastcolx = sheet.ncols - 1
-            for rowx in xrange(sheet.nrows):
+            for rowx in range(sheet.nrows):
                 cell = sheet.cell(rowx, lastcolx)
                 if cell.ctype != XL_CELL_EMPTY:
                     print("%s (%d, %d): type %d, value %r" % (

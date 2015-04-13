@@ -7,7 +7,7 @@ from __future__ import with_statement
 # See license.txt for more details.
 
 from mock import Mock
-from StringIO import StringIO
+from io import StringIO
 from tempfile import TemporaryFile
 from testfixtures import compare, Comparison as C, replace, log_capture, ShouldRaise, tempdir
 from unittest import TestSuite,TestCase,makeSuite
