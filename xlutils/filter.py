@@ -696,8 +696,8 @@ class Echo(MethodFilter):
 
     def method(self,name,*args):
         if self.name:
-            print repr(self.name),
-        print "%s:%r"%(name,args)
+            print((repr(self.name),))
+        print("%s:%r"%(name,args))
         
 try:
     from guppy import hpy
