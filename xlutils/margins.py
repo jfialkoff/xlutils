@@ -37,7 +37,7 @@ def cells_all_junk(cells, is_rubbish=None):
         return False
     return True
 
-def ispunc(c, s=set(unicode(string.punctuation))):
+def ispunc(c, s=set(str(string.punctuation))):
     """Return True if c is a single punctuation character"""
     return c in s
 
